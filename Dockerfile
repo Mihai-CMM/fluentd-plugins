@@ -38,7 +38,8 @@ RUN apt-get autoremove --purge -y curl && \
     apt-get update && apt-get upgrade -y && \
     apt-get install make libcurl4-gnutls-dev --yes && \
     apt-get install build-essential libc6 libc6-dev libffi-dev  --yes && \
-    apt-get install libpq-dev --yes && \
+    apt-get install libpq5 --yes && \
+    apt-get install libssl-dev libpq-dev libgmp-dev zlib1g-dev  --yes  && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN chmod g+rwX /opt/bitnami
 
@@ -55,10 +56,9 @@ EXPOSE 5140 24224
 
 WORKDIR /opt/bitnami/fluentd
 
-RUN  gem install fluent-plugin-mongo -v 0.7.12
-
-RUN  gem install fluent-plugin-dbi
-
+RUN  fluent-gem install fluent-plugin-mongo -v 0.7.12
+RUN  fluent-gem install fluent-plugin-sql
+RUN  fluent-gem install pg -v 1.4.5
 
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/fluentd/entrypoint.sh" ]
