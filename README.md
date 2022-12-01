@@ -5,8 +5,12 @@ This is just an extension of bitnami/fluentd container to use also mongo and psq
 
 ##
 RUN  fluent-gem install fluent-plugin-mongo -v 0.7.12
+
 RUN  fluent-gem install fluent-plugin-sql
+
 RUN  fluent-gem install pg -v 1.4.5
+
+added and some dependecies to build this docker image
 ##
 
 Everything else needed is on their Bitnami github and web
