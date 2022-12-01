@@ -18,8 +18,10 @@ Everything else needed is on their Bitnami github and web
 If you really need my image you can change bitnami chart to
 
 .....
+```
 image:
   registry: docker.io
   repository: costache2mihai/fluentd-plugins
   tag: latest
+```
 .....
