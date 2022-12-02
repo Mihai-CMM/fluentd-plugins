@@ -56,9 +56,10 @@ EXPOSE 5140 24224
 
 WORKDIR /opt/bitnami/fluentd
 
-RUN  fluent-gem install fluent-plugin-mongo -v 0.7.12
+RUN  fluent-gem install fluent-plugin-mongo
+RUN  gem install bson_ext
 RUN  fluent-gem install fluent-plugin-sql
-RUN  fluent-gem install pg -v 1.4.5
+RUN  fluent-gem install pg
 
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/fluentd/entrypoint.sh" ]
